@@ -8,7 +8,8 @@ def main (page: ft.Page):
 
     def btn_click (e: ft.Event):
         greetings.current.controls.append(
-            ft.Text(f"Hello, {first_name.current.value} {last_name.current.value}!"))
+            ft.Text(f"Hello, {first_name.current.value} {last_name.current.value}!")
+        )
 
         first_name.current.value    = ""
         last_name.current.value     = ""
@@ -16,10 +17,12 @@ def main (page: ft.Page):
         page.update()
         first_name.current.focus()
 
+    page.theme_mode = ft.ThemeMode.LIGHT
+
     page.add(
         ft.TextField(ref = first_name, label = "First name", autofocus = True),
         ft.TextField(ref = last_name, label = "Last name", autofocus = False),
-        ft.ElevatedButton(ref = say_button, label = "Say Hello!", on_click = btn_click),
+        ft.ElevatedButton(ref = say_button, text = "Say Hello!", on_click = btn_click),
         ft.Column(ref = greetings)
     )
 
